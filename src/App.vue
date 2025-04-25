@@ -1,12 +1,70 @@
 <script setup>
-
+import { ref } from 'vue';
+const item = ref([
+{
+        id: 1,
+        titulo: 'Chain of Iron: Volume 2',
+        autor: 'Cassandra Clare',
+        preco: 23.24,
+        capa: "public/imagens/livro1.png",
+    },
+    {
+        id: 2,
+        titulo: 'Chain of Thorns',
+        autor: 'Cassandra Clare',
+        preco: 23.24,
+        capa: "public/imagens/livro2.png",
+    },
+    {
+        id: 3,
+        titulo: 'City of Fallen Angels',
+        autor: 'Cassandra Clare',
+        preco: 13,
+        capa: "public/imagens/livro3.png",
+    },
+    {
+        id: 4,
+        titulo: 'Nona the Ninth',
+        autor: 'Cassandra Clare',
+        preco: ,
+        capa: "public/imagens/livro4.png",
+    },
+    {
+        id: 5,
+        titulo: 'Harlem Shuffle',
+        autor: 'Colson Whitehead',
+        preco: ,
+        capa: "public/imagens/livro5.png",
+    },
+    {
+        id: 6,
+        titulo: 'Two Old Women',
+        autor: 'Velma Wallis', 
+        preco: ,
+        capa: "public/imagens/livro6.png",
+    },
+    {
+        id: 7,
+        titulo: 'Carrie Soto Is Back',
+        autor: 'Taylor Jenkins Reid',
+        preco: ,
+        capa: "public/imagens/livro7.png",
+    },
+    {
+        id: 8,
+        titulo: 'Book Lovers',
+        autor: 'Emily Henry',
+        preco: ,
+        capa: "public/imagens/livro8.png",
+    },
+])
 </script>
 
 <template>
 <main>
   <header>
     <div class="topo">
-      <div>
+      <div class="if">
         <p>IFbooks</p>
         </div>
         <span class="barra"></span>
@@ -36,6 +94,7 @@
       <i class="fa-solid fa-user"></i>
     </div>
     </div>
+    <hr>
   </header>
   <section class="inico">
 
@@ -47,17 +106,27 @@
           <button>Acessar página do livro</button>
         </div>  
         <div>
-          <img src="/public/imagens/book.png" alt="book.png" style="display: block; margin: ;">
+          <img src="/public/imagens/book.png" alt="book.png" style="display: block;">
         </div>
   </div> 
   </section>
   <section class="mais">
+    <div class="itenss">
+      <div class="frete">
         <i class="fa-solid fa-truck"></i>
         Frete grátis para SC
+      </div>
+      <hr>
+      <div>
         <i class="fa-solid fa-star"></i>
         Livros recomendados
+      </div>
+      <hr>
+      <div>
         <i class="fa-solid fa-book-open"></i>
         Mais vendidos
+      </div>
+    </div>
   </section>
   <section class="lancamentos">
     <div class="cima">
@@ -124,7 +193,7 @@
   </section>
 </main> 
 <footer>
-  <div>
+  <div class="ifbooks">
     <h2>IFbooks</h2>
     <i class="fa-brands fa-square-facebook"></i>
     <i class="fa-brands fa-square-instagram"></i>
@@ -153,7 +222,7 @@
     width: 20px;
   }
   p.apreco{
-    color:yellowgreen;
+    color: #27AE6099;
   }
   div.itens nav a{
     text-decoration: none;
@@ -169,6 +238,7 @@
   }
   header span{
     border-left: solid 1px;
+
   }
   section.lancamentos div.cima{
     display: flex;
@@ -183,4 +253,34 @@
   section.lacamentos div.cima div h2{
     font-size: 1.4rem;
   }
+  section.mais div.itenss {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+  }
+  section.mais hr{
+    border-bottom: solid 20px;
+  }
+  section.mais{
+    margin: 30px;
+  }
+  section
+  header div.icons{
+    color: #27AE60;
+  }
+  header div.itens nav a{
+    color: #7B7881;
+  }
+  header hr{
+    color: #27AE60;
+  }
+  footer{
+    background-color: #27AE60;
+    color: white;
+  }
+  footer div.ifbooks h2{
+    font-size: 0.9rem;
+  }
+
+
 </style>
