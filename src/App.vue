@@ -1,5 +1,5 @@
 <script setup>
-/* DAvidospasssossosososososososo*/
+
 import { ref } from 'vue';
 const produtos = ref([
     {
@@ -59,6 +59,8 @@ const produtos = ref([
         capa: "public/imagens/livro8.png",
     },
 ])
+
+const mostrarcarrinho = ref(false) 
 </script>
 <template>
 <main>
@@ -87,7 +89,7 @@ const produtos = ref([
         </nav>
     </div>
     <div class="icons">
-      <i class="fa-solid fa-cart-shopping"></i>
+      <i @click="mostrarcarrinho = !mostrarcarrinho" class="fa-solid fa-cart-shopping"></i>
       <span></span>
       <i class="fa-solid fa-heart"></i>
       <span></span>
@@ -96,7 +98,7 @@ const produtos = ref([
     </div>
     <hr>
   </header>
-  <section class="inicio">
+  <section class="inicio" v-if="!mostrarcarrinho">
     
   <div class="pagina1">
         <div class="mudar">
@@ -110,7 +112,7 @@ const produtos = ref([
         </div>
   </div> 
   </section>
-  <section class="mais">
+  <section class="mais" v-if="!mostrarcarrinho">
     <div class="itenss">
       <div class="frete">
         <i class="fa-solid fa-truck"></i>
@@ -128,7 +130,7 @@ const produtos = ref([
       </div>
     </div>
   </section>
-  <section class="lancamentos">
+  <section class="lancamentos" v-if="!mostrarcarrinho">
     <div>
       <h1>Lançamentos</h1>
     </div>
@@ -144,6 +146,9 @@ const produtos = ref([
         </button>
       </li>
     </ul>
+  </section>
+  <section class="carrinho" v-if="mostrarcarrinho">
+    <h1>Carrinho</h1>
   </section>
 </main> 
 <footer>
