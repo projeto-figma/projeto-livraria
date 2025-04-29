@@ -75,7 +75,7 @@ const produtos = ref([
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
     <div class="itens">
-        <nav>
+      <nav>
             <a href="#">Termos</a>
         
             <a href="#">Devoluções</a>
