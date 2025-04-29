@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
-const item = ref([
-{
+const produtos = ref([
+    {
         id: 1,
         titulo: 'Chain of Iron: Volume 2',
         autor: 'Cassandra Clare',
@@ -19,45 +19,46 @@ const item = ref([
         id: 3,
         titulo: 'City of Fallen Angels',
         autor: 'Cassandra Clare',
-        preco: 13,
+        preco: 13.94,
         capa: "public/imagens/livro3.png",
     },
     {
         id: 4,
         titulo: 'Nona the Ninth',
         autor: 'Cassandra Clare',
-        preco: ,
+        preco: 16.84,
         capa: "public/imagens/livro4.png",
     },
     {
         id: 5,
         titulo: 'Harlem Shuffle',
         autor: 'Colson Whitehead',
-        preco: ,
+        preco: 26.92,
         capa: "public/imagens/livro5.png",
     },
     {
         id: 6,
         titulo: 'Two Old Women',
         autor: 'Velma Wallis', 
-        preco: ,
+        preco: 13.95,
         capa: "public/imagens/livro6.png",
     },
     {
         id: 7,
         titulo: 'Carrie Soto Is Back',
         autor: 'Taylor Jenkins Reid',
-        preco: ,
+        preco: 26.04,
         capa: "public/imagens/livro7.png",
     },
     {
         id: 8,
         titulo: 'Book Lovers',
         autor: 'Emily Henry',
-        preco: ,
+        preco: 15.81,
         capa: "public/imagens/livro8.png",
     },
 ])
+
 </script>
 
 <template>
@@ -129,67 +130,21 @@ const item = ref([
     </div>
   </section>
   <section class="lancamentos">
-    <div class="cima">
-      <div>
-        <img src="/public/imagens/livro1.png" alt="livro1.png">
-        <h2>Chain of Iron: Volume 2</h2>
-        <p>Cassandra Clare</p>
-        <p>R$23.24</p> <i class="fa-regular fa-heart"></i>
-        <button><i class="fa-solid fa-cart-shopping"></i>comprar</button>
-      </div>
-      <div>
-        <img src="/public/imagens/livro2.png" alt="livro2.png">
-        <h2>Chain of Thorns</h2>
-        <p>Cassandra Clare</p>
-        <p>R$23.24</p> <i class="fa-regular fa-heart"></i>
-        <button><i class="fa-solid fa-cart-shopping"></i>comprar</button>
-      </div>
-      
-      <div>
-        <img src="/public/imagens/livro3.png" alt="livro3.png">
-        <h2>City of Fallen Angels</h2>
-        <p>Cassandra Clare</p>
-        <p>R$13.94</p> <i class="fa-regular fa-heart"></i>
-        <button><i class="fa-solid fa-cart-shopping"></i>comprar</button>
-      </div>
-      <div>
-        <img src="/public/imagens/livro4.png" alt="livro4.png">
-        <h2>Nona the Ninth</h2>
-        <p>Cassandra Clare</p>
-        <p>R$16.84</p> <i class="fa-regular fa-heart"></i>
-        <button><i class="fa-solid fa-cart-shopping"></i>comprar</button>
-      </div>
+    <div>
+      <h1>Lançamentos</h1>
     </div>
-    <div class="baixo">
-      <div>
-        <img src="/public/imagens/livro5.png" alt="livro5.png">
-        <h2>Harlem Shuffle</h2>
-        <p>Colson Whitehead</p>
-        <p>R$26.92</p> <i class="fa-regular fa-heart"></i>
-        <button><i class="fa-solid fa-cart-shopping"></i>comprar</button>
-      </div>
-      <div>
-        <img src="/public/imagens/livro6.png" alt="livro6.png">
-        <h2>Two Old Women</h2>
-        <p>Two Old Women</p>
-        <p>R$13.95</p> <i class="fa-regular fa-heart"></i>
-        <button><i class="fa-solid fa-cart-shopping"></i>comprar</button>
-      </div>
-      <div>
-        <img src="/public/imagens/livro7.png" alt="livro7.png">
-        <h2>Carrie Soto Is Back</h2>
-        <p>Taylor Jenkins Reid</p>
-        <p>R$26.04</p> <i class="fa-regular fa-heart"></i>
-        <button><i class="fa-solid fa-cart-shopping"></i>comprar</button>
-      </div>
-      <div>
-        <img src="/public/imagens/livro8.png" alt="livro8.png">
-        <h2>Book Lovers</h2>
-        <p>Emily Henry</p>
-        <p>R$15.81</p> <i class="fa-regular fa-heart"></i>
-        <button><i class="fa-solid fa-cart-shopping"></i>comprar</button>
-      </div>
-    </div>
+    <ul>
+      <li v-for="(item, index) of produtos" :key="index">
+        <img :src="item.capa" :alt="item.titulo">
+        <h2>{{ item.titulo }}</h2>
+        <p>{{ item.autor }}</p>
+        <span>{{ item.preco }}</span>
+        <button>
+          <i class="fa-solid fa-cart-shopping"></i>
+          Comprar 
+        </button>
+      </li>
+    </ul>
   </section>
 </main> 
 <footer>
@@ -215,6 +170,12 @@ const item = ref([
 </template>
 
 <style scoped>
+  div.pagina1{
+    display: flex;
+}
+header div.topo{
+    display: flex;
+}
   div.pagina1 div.mudar h1{
     font-size: 2.5rem;
   }
@@ -240,18 +201,19 @@ const item = ref([
     border-left: solid 1px;
 
   }
-  section.lancamentos div.cima{
-    display: flex;
-    padding: 5vw;
-    justify-content: space-between;
+  section.lancamentos{
+    padding: 0 8vw;
   }
-  section.lancamentos div.baixo{
+  section.lancamentos ul{
     display: flex;
-    margin: 5vw;
-    justify-content: space-between;
+    flex-wrap: wrap;
   }
-  section.lacamentos div.cima div h2{
-    font-size: 1.4rem;
+  section.lancamentos ul li{
+    width: 22%;
+    margin: 0 1vw;
+  }
+  section.lancamentos ul li img{
+    width: 100% ;
   }
   section.mais div.itenss {
     display: flex;
