@@ -1,4 +1,5 @@
 <script setup>
+/* DAvidospasssossosososososososo*/
 import { ref } from 'vue';
 const produtos = ref([
     {
@@ -96,7 +97,7 @@ const produtos = ref([
     <hr>
   </header>
   <section class="inicio">
-
+    
   <div class="pagina1">
         <div class="mudar">
           <p>Autor de Abril</p>
