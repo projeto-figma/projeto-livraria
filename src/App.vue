@@ -58,9 +58,7 @@ const produtos = ref([
         capa: "public/imagens/livro8.png",
     },
 ])
-
 </script>
-
 <template>
 <main>
   <header>
@@ -97,7 +95,7 @@ const produtos = ref([
     </div>
     <hr>
   </header>
-  <section class="inico">
+  <section class="inicio">
 
   <div class="pagina1">
         <div class="mudar">
@@ -175,6 +173,7 @@ const produtos = ref([
 }
 header div.topo{
     display: flex;
+    justify-content: ;
 }
   div.pagina1 div.mudar h1{
     font-size: 2.5rem;
@@ -199,7 +198,6 @@ header div.topo{
   }
   header span{
     border-left: solid 1px;
-
   }
   section.lancamentos{
     padding: 0 8vw;
