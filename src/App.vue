@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue';
 const produtos = ref([
-  /*vitor*/
     {
         id: 1,
         titulo: 'Chain of Iron: Volume 2',
@@ -129,7 +128,7 @@ const produtos = ref([
     </div>
   </section>
   <section class="lancamentos">
-    <div>
+    <div class="titulo">
       <h1>Lançamentos</h1>
     </div>
     <ul>
@@ -137,7 +136,7 @@ const produtos = ref([
         <img :src="item.capa" :alt="item.titulo">
         <h2>{{ item.titulo }}</h2>
         <p>{{ item.autor }}</p>
-        <span>{{ item.preco }}</span>
+        <p class="preco">R${{ item.preco }}</p>
         <button>
           <i class="fa-solid fa-cart-shopping"></i>
           Comprar 
@@ -147,24 +146,32 @@ const produtos = ref([
   </section>
 </main> 
 <footer>
-  <div class="ifbooks">
-    <h2>IFbooks</h2>
-    <i class="fa-brands fa-square-facebook"></i>
-    <i class="fa-brands fa-square-instagram"></i>
-    <i class="fa-brands fa-square-twitter"></i>
-  </div>
-  <div>
-    <h2>Contato</h2>
-    <i class="fa-solid fa-phone"></i> <p>+55 47 40045263</p>
-    <i class="fa-solid fa-clock"></i> <p>8h às 23h - Seg a Sex</p>
-    <i class="fa-solid fa-envelope"></i> <p>contato@ifbooks.com</p>
-    <img src="/public/imagens/paypal.png" alt="paypal.png">
-    <img src="/public/imagens/MasterCard.png" alt="MasterCard.png">
-    <img src="/public/imagens/VISA.png" alt="VISA.png">
-  </div>
-  <div>
-    &copy; Alguns direitos reservados. IFbooks 2025. 
-  </div>
+  <nav>
+    <div class="redes">
+      <h2>IFbooks</h2>
+      <i class="fa-brands fa-square-facebook"></i>
+      <i class="fa-brands fa-square-instagram"></i>
+      <i class="fa-brands fa-square-twitter"></i>
+    </div>
+    <div class="contato">
+      <h2>Contato</h2>
+      <nav>
+        <i class="fa-solid fa-phone"></i> 
+        <p>+55 47 40045263</p>
+        <i class="fa-solid fa-clock"></i> 
+        <p>8h às 23h - Seg a Sex</p>
+        <i class="fa-solid fa-envelope"></i> 
+        <p>contato@ifbooks.com</p>
+      </nav>
+      <img src="/public/imagens/paypal.png" alt="paypal.png">
+      <img src="/public/imagens/MasterCard.png" alt="MasterCard.png">
+      <img src="/public/imagens/VISA.png" alt="VISA.png">
+    </div>
+    <hr>
+    <div class="copy">
+      <p>&copy; Alguns direitos reservados. IFbooks 2025. </p>
+    </div>
+  </nav>
 </footer>
 </template>
 
@@ -203,9 +210,17 @@ header div.topo{
   section.lancamentos{
     padding: 0 8vw;
   }
+  section.lancamentos div h1 {
+    font-size: 2rem;
+    margin: 1vw 0 3vw 0 ;
+    font-weight: bold;
+  }
   section.lancamentos ul{
     display: flex;
     flex-wrap: wrap;
+  }
+  section.lancamentos ul button{
+    color: #27AE60;
   }
   section.lancamentos ul li{
     width: 22%;
@@ -213,6 +228,27 @@ header div.topo{
   }
   section.lancamentos ul li img{
     width: 100% ;
+  }
+  section.lancamentos ul li button{
+    background-color: #27AE60;
+    color: white;
+    width: 100%;
+    margin: 0 0 70px 0;
+    font-size: 1.2rem;
+    height: 9%;
+  }
+  section.lancamentos ul li h2{
+    font-size: 1.7rem;
+    margin: 20px 0 20px 0;
+  }
+  section.lancamentos ul li p{
+    font-size: 1.2rem;
+    margin: 0 0 20px 0 ;
+    color: #4F4C57;
+  }
+  section.lancamentos ul li p.preco{
+    color: #382C2C;
+    font-weight: bold;
   }
   section.mais div.itenss {
     display: flex;
@@ -225,23 +261,42 @@ header div.topo{
   section.mais{
     margin: 30px;
   }
-  section
   header div.icons{
     color: #27AE60;
   }
   header div.itens nav a{
     color: #7B7881;
   }
-  header hr{
-    color: #27AE60;
-  }
-  footer{
+  footer {
     background-color: #27AE60;
+  }
+  footer nav div.ifbooks h2{
     color: white;
   }
-  footer div.ifbooks h2{
-    font-size: 0.9rem;
+  footer nav div.contato h2{
+    color: white;
   }
-
-
+  footer nav div.contato {
+    color: #FFFFFFCC;
+    opacity: 0.8;
+    display: flex;
+    justify-content: right;
+  }
+  footer nav div.redes {
+    color: white;
+  }
+  footer hr{
+    border-top: 2px;
+    color: #FFFFFF;
+    margin: 0 0 10px 0;
+  }
+  footer div.copy{
+    display: flex;
+    justify-content: center;
+    color: #FFFFFF99;
+    opacity: 0.6;
+  }
+  footer div.copy p {
+    margin: 30px;
+  }
 </style>
