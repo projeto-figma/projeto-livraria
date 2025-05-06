@@ -65,7 +65,7 @@ const produtos = ref([
   <header>
     <div class="topo">
       <div class="if">
-        <p>IFbooks</p>
+        <p class="ifbook">IFbooks</p>
         </div>
         <span class="barra"></span>
         <div>
@@ -94,10 +94,9 @@ const produtos = ref([
       <i class="fa-solid fa-user"></i>
     </div>
     </div>
-    <hr>
+    <hr class="head">
   </header>
   <section class="inicio">
-
   <div class="pagina1">
         <div class="mudar">
           <p>Autor de Abril</p>
@@ -105,7 +104,7 @@ const produtos = ref([
           <p>Eric-Emmanuel Schmitt has been awarded more than 20 <br> literary prizes and distinctions, and in 2001 he received the <br> title of Chevalier des Arts et des Lettres. His books have been <br> translated into over 40 languages.</p>
           <button>Acessar página do livro</button>
         </div>  
-        <div>
+        <div class="imagembook">
           <img src="/public/imagens/book.png" alt="book.png" style="display: block;">
         </div>
   </div> 
@@ -182,7 +181,7 @@ const produtos = ref([
 }
 header div.topo{
     display: flex;
-    justify-content: ;
+
 }
   div.pagina1 div.mudar h1{
     font-size: 2.5rem;
@@ -299,5 +298,36 @@ header div.topo{
   }
   footer div.copy p {
     margin: 30px;
+  }
+  section.inicio .pagina1 {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 10vw 10px 0;
+  }
+  div.pagina1 div.mudar{
+    margin: 10vw 10vw 10vw 2vw;
+  }
+  header div.topo{
+   margin: 20px 20px 20px 20px;
+  }
+  header p.ifbook{
+    margin: 5px 5px 0 5vw ;
+  }
+  header .apreco{
+    margin: 0 5vw 0 5px;
+  }
+  header hr.head{
+    color: #27AE60;
+  }
+  header div.itens{
+    margin: 0 2vw 0 2vw;
+  }
+  .pesquisa input{
+    border: none;
+    background: #F1F1F1;
+    padding: 10px 10vw 10px 20px;
+  }
+  .pesquisa i{
+    transform: translateX(-30px);
   }
 </style>
