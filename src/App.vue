@@ -99,9 +99,9 @@ const produtos = ref([
   <section class="inicio">
   <div class="pagina1">
         <div class="mudar">
-          <p>Autor de Abril</p>
+          <p class="moldura">Autor de Abril</p>
           <h1>Eric-Emanuel Schmitt </h1>
-          <p>Eric-Emmanuel Schmitt has been awarded more than 20 <br> literary prizes and distinctions, and in 2001 he received the <br> title of Chevalier des Arts et des Lettres. His books have been <br> translated into over 40 languages.</p>
+          <p class="texto">Eric-Emmanuel Schmitt has been awarded more than 20 <br> literary prizes and distinctions, and in 2001 he received the <br> title of Chevalier des Arts et des Lettres. His books have been <br> translated into over 40 languages.</p>
           <button>Acessar página do livro</button>
         </div>  
         <div class="imagembook">
@@ -110,22 +110,24 @@ const produtos = ref([
   </div> 
   </section>
   <section class="mais">
+    <hr class="linha">
     <div class="itenss">
       <div class="frete">
         <i class="fa-solid fa-truck"></i>
         Frete grátis para SC
       </div>
-      <hr>
-      <div>
+      <hr class="coluna">
+      <div class="frete">
         <i class="fa-solid fa-star"></i>
         Livros recomendados
       </div>
-      <hr>
-      <div>
+      <hr class="coluna">
+      <div class="frete">
         <i class="fa-solid fa-book-open"></i>
         Mais vendidos
       </div>
     </div>
+    <hr class="linha">
   </section>
   <section class="lancamentos">
     <div class="titulo">
@@ -184,7 +186,25 @@ header div.topo{
 
 }
   div.pagina1 div.mudar h1{
-    font-size: 2.5rem;
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 2vw 0 1vw 0;
+  }
+  div.pagina1 div.mudar p.texto{
+    margin: 10px 0 20px 0;
+  }
+  div.pagina1 div.mudar p.moldura{
+    border: solid 1px;
+    color: #27AE60;
+    width: 20%;
+    padding: 15px 10px 15px 10px;
+  }
+  div.pagina1 div.mudar button{
+    background-color: #27AE60;
+    color: white;
+    font-size: 1.2rem;
+    padding: 15px 15px 15px 15px;
+    margin: 1vw 0 0 0;
   }
   svg{
     width: 20px;
@@ -256,7 +276,7 @@ header div.topo{
     width: 70%;
   }
   section.mais hr{
-    border-bottom: solid 20px;
+    border-bottom: solid 10px;
   }
   section.mais{
     margin: 30px;
@@ -305,7 +325,10 @@ header div.topo{
     margin: 10px 10vw 10px 0;
   }
   div.pagina1 div.mudar{
-    margin: 10vw 10vw 10vw 2vw;
+    margin: 6vw 10vw 0 8vw;
+  }
+  div.pagina1 h1{
+    font-size: 3rem;
   }
   header div.topo{
    margin: 20px 20px 20px 20px;
@@ -320,7 +343,13 @@ header div.topo{
     color: #27AE60;
   }
   header div.itens{
-    margin: 0 2vw 0 2vw;
+    margin: 6px 2vw 0 8vw;
+  }
+  header .icons{
+    margin: 6px 2vw 0 10vw;
+  }
+  header span{
+    margin: 0 5px 0 5px;
   }
   .pesquisa input{
     border: none;
@@ -330,4 +359,17 @@ header div.topo{
   .pesquisa i{
     transform: translateX(-30px);
   }
+  section.mais .linha{
+    border-bottom: solid 1px;
+    color: #27AE60;
+    margin: 30px;
+  }
+  section.mais div.frete{
+   margin: 5px 0 0 0 ;
+   font-size: 1.8rem;
+  }
+  section.mais div.itenss{
+    margin: 0 0 0 13vw;
+  }
+
 </style>
