@@ -2,6 +2,7 @@
 
 import { ref } from 'vue';
 const produtos = ref([
+  /*vitor*/
     {
         id: 1,
         titulo: 'Chain of Iron: Volume 2',
@@ -59,6 +60,32 @@ const produtos = ref([
         capa: "public/imagens/livro8.png",
     },
 ])
+const carrinho = ref([])
+
+function adicionarAoCarrinho(produto) {
+  const itemExistente = carrinho.value.find(p => p.id === produto.id)
+  if (itemExistente) {
+    itemExistente.quantidade++
+  } else {
+    carrinho.value.push({ ...produto, quantidade: 1 })
+  }
+}
+
+function removerDoCarrinho(produto) {
+  const item = carrinho.value.find(p => p.id === produto.id)
+  if (item) {
+    item.quantidade--
+    if (item.quantidade <= 0) {
+      const index = carrinho.value.indexOf(item)
+      carrinho.value.splice(index, 1)
+    }
+  }
+}
+
+function totalCarrinho() {
+  return carrinho.value.reduce((total, item) => total + item.preco * item.quantidade, 0).toFixed(2)
+}
+
 
 const mostrarcarrinho = ref(false) 
 </script>
@@ -140,16 +167,68 @@ const mostrarcarrinho = ref(false)
         <h2>{{ item.titulo }}</h2>
         <p>{{ item.autor }}</p>
         <span>{{ item.preco }}</span>
-        <button>
-          <i class="fa-solid fa-cart-shopping"></i>
-          Comprar 
-        </button>
+        <button @click="adicionarAoCarrinho(item)">
+  <i class="fa-solid fa-cart-shopping"></i>
+  Comprar 
+</button>
       </li>
     </ul>
   </section>
   <section class="carrinho" v-if="mostrarcarrinho">
     <h1>Carrinho</h1>
-  </section>
+    <ul>
+      <li>
+        <p>Título</p>
+      </li>
+      <li>
+        Quantidade
+      </li>
+      <li>
+        Subtotal
+      </li>
+    </ul>
+  <ul v-if="carrinho.length > 0">
+    <li v-for="item in carrinho" :key="item.id">
+      <div>
+        <img :src="item.capa" alt="item.titulo">
+        <div>
+          <h3>{{ item.titulo }}</h3>
+          <p>Quantidade: {{ item.quantidade }}</p>
+          <p>Subtotal: R$ {{ (item.preco * item.quantidade).toFixed(2) }}</p>
+          <button @click="removerDoCarrinho(item)">
+            Remover
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <p v-else>O carrinho está vazio.</p>
+  <button>
+    Voltar para loja
+  </button>
+  <p><input type="text" placeholder="Código do cupom">
+  <button>
+    Inserir Cupom
+  </button>
+</p>
+<h2>Total da Compra</h2>
+<ul>
+  <li>
+    <h2>Produtos: R$ {{ totalCarrinho() }}</h2>
+  </li>
+  <li>
+    <h2>Frete: Grátis</h2>
+  </li>
+  <li>
+    <h2>Total: R$ {{ totalCarrinho() }}</h2>
+  </li>
+  <li>
+    <button>
+      Ir para o pagamento
+    </button>
+  </li>
+</ul>
+</section>
 </main> 
 <footer>
   <div class="ifbooks">
