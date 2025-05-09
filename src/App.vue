@@ -1,131 +1,136 @@
 <script setup>
 import { ref } from 'vue';
 const produtos = ref([
-  /*vitor*/
-    {
-        id: 1,
-        titulo: 'Chain of Iron: Volume 2',
-        autor: 'Cassandra Clare',
-        preco: 23.24,
-        capa: "public/imagens/livro1.png",
-    },
-    {
-        id: 2,
-        titulo: 'Chain of Thorns',
-        autor: 'Cassandra Clare',
-        preco: 23.24,
-        capa: "public/imagens/livro2.png",
-    },
-    {
-        id: 3,
-        titulo: 'City of Fallen Angels',
-        autor: 'Cassandra Clare',
-        preco: 13.94,
-        capa: "public/imagens/livro3.png",
-    },
-    {
-        id: 4,
-        titulo: 'Nona the Ninth',
-        autor: 'Cassandra Clare',
-        preco: 16.84,
-        capa: "public/imagens/livro4.png",
-    },
-    {
-        id: 5,
-        titulo: 'Harlem Shuffle',
-        autor: 'Colson Whitehead',
-        preco: 26.92,
-        capa: "public/imagens/livro5.png",
-    },
-    {
-        id: 6,
-        titulo: 'Two Old Women',
-        autor: 'Velma Wallis', 
-        preco: 13.95,
-        capa: "public/imagens/livro6.png",
-    },
-    {
-        id: 7,
-        titulo: 'Carrie Soto Is Back',
-        autor: 'Taylor Jenkins Reid',
-        preco: 26.04,
-        capa: "public/imagens/livro7.png",
-    },
-    {
-        id: 8,
-        titulo: 'Book Lovers',
-        autor: 'Emily Henry',
-        preco: 15.81,
-        capa: "public/imagens/livro8.png",
-    },
-])
-const carrinho = ref([])
+  {
+    id: 1,
+    titulo: 'Chain of Iron: Volume 2',
+    autor: 'Cassandra Clare',
+    preco: 23.24,
+    capa: "public/imagens/livro1.png",
+  },
+  {
+    id: 2,
+    titulo: 'Chain of Thorns',
+    autor: 'Cassandra Clare',
+    preco: 23.24,
+    capa: "public/imagens/livro2.png",
+  },
+  {
+    id: 3,
+    titulo: 'City of Fallen Angels',
+    autor: 'Cassandra Clare',
+    preco: 13.94,
+    capa: "public/imagens/livro3.png",
+  },
+  {
+    id: 4,
+    titulo: 'Nona the Ninth',
+    autor: 'Cassandra Clare',
+    preco: 16.84,
+    capa: "public/imagens/livro4.png",
+  },
+  {
+    id: 5,
+    titulo: 'Harlem Shuffle',
+    autor: 'Colson Whitehead',
+    preco: 26.92,
+    capa: "public/imagens/livro5.png",
+  },
+  {
+    id: 6,
+    titulo: 'Two Old Women',
+    autor: 'Velma Wallis',
+    preco: 13.95,
+    capa: "public/imagens/livro6.png",
+  },
+  {
+    id: 7,
+    titulo: 'Carrie Soto Is Back',
+    autor: 'Taylor Jenkins Reid',
+    preco: 26.04,
+    capa: "public/imagens/livro7.png",
+  },
+  {
+    id: 8,
+    titulo: 'Book Lovers',
+    autor: 'Emily Henry',
+    preco: 15.81,
+    capa: "public/imagens/livro8.png",
+  },
+]);
+const carrinho = ref([]);
 
 function adicionarAoCarrinho(produto) {
-  const itemExistente = carrinho.value.find(p => p.id === produto.id)
+  const itemExistente = carrinho.value.find(p => p.id === produto.id);
   if (itemExistente) {
-    itemExistente.quantidade++
+    itemExistente.quantidade++;
   } else {
-    carrinho.value.push({ ...produto, quantidade: 1 })
+    carrinho.value.push({ ...produto, quantidade: 1 });
   }
 }
 
 function removerDoCarrinho(produto) {
-  const item = carrinho.value.find(p => p.id === produto.id)
+  const item = carrinho.value.find(p => p.id === produto.id);
   if (item) {
-    item.quantidade--
+    item.quantidade--;
     if (item.quantidade <= 0) {
-      const index = carrinho.value.indexOf(item)
-      carrinho.value.splice(index, 1)
+      const index = carrinho.value.indexOf(item);
+      carrinho.value.splice(index, 1);
     }
   }
 }
-
-function totalCarrinho() {
-  return carrinho.value.reduce((total, item) => total + item.preco * item.quantidade, 0).toFixed(2)
+function aumentarQuantidade(produto) {
+  const item = carrinho.value.find(p => p.id === produto.id);
+  if (item) {
+    item.quantidade++;
+  } else {
+    carrinho.value.push({ ...produto, quantidade: 1 }); 
+  }
 }
 
 
-const mostrarcarrinho = ref(false) 
+function totalCarrinho() {
+  return carrinho.value.reduce((total, item) => total + item.preco * item.quantidade, 0).toFixed(2);
+}
+
+const mostrarcarrinho = ref(false);
 </script>
+
 <template>
-<main>
-  <header>
-    <div class="topo">
-      <div class="if">
-        <p class="ifbook">IFbooks</p>
+  <main>
+    <header>
+      <div class="topo">
+        <div class="if">
+          <p class="ifbook">IFbooks</p>
         </div>
         <span class="barra"></span>
         <div>
-        <p class="apreco">Apreço a <br>leitura</p>
-      </div>
-      <div class="pesquisa">
-        <input type="text" placeholder="Pesquisar">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </div>
-    <div class="itens">
-      <nav>
+          <p class="apreco">Apreço a <br>leitura</p>
+        </div>
+        <div class="pesquisa">
+          <input type="text" placeholder="Pesquisar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="itens">
+          <nav>
             <a href="#">Termos</a>
-        
             <a href="#">Devoluções</a>
-        
             <a href="#">Envio</a>
-          
             <a href="#">Equipe</a>
-        </nav>
-    </div>
-    <div class="icons">
-      <i @click="mostrarcarrinho = !mostrarcarrinho" class="fa-solid fa-cart-shopping"></i>
-      <span></span>
-      <i class="fa-solid fa-heart"></i>
-      <span></span>
-      <i class="fa-solid fa-user"></i>
-    </div>
-    </div>
-    <hr class="head">
-  </header>
-  <section class="inicio" v-if="!mostrarcarrinho">
-  <div class="pagina1">
+          </nav>
+        </div>
+        <div class="icons">
+          <i @click="mostrarcarrinho = !mostrarcarrinho" class="fa-solid fa-cart-shopping"></i>
+          <span></span>
+          <i class="fa-solid fa-heart"></i>
+          <span></span>
+          <i class="fa-solid fa-user"></i>
+        </div>
+      </div>
+      <hr class="head">
+    </header>
+    <section class="inicio" v-if="!mostrarcarrinho">
+      <div class="pagina1">
         <div class="mudar">
           <p class="moldura">Autor de Abril</p>
           <h1>Eric-Emanuel Schmitt </h1>
@@ -135,135 +140,138 @@ const mostrarcarrinho = ref(false)
         <div class="imagembook">
           <img src="/public/imagens/book.png" alt="book.png" style="display: block;">
         </div>
-  </div> 
-  </section>
-  <section class="mais" v-if="!mostrarcarrinho">
-  <hr class="linha">
+      </div> 
+    </section>
+    <section class="mais" v-if="!mostrarcarrinho">
+      <hr class="linha">
 
-    <div class="itenss">
-      <div class="frete">
-        <i class="fa-solid fa-truck"></i>
-        Frete grátis para SC
-      </div>
-      <hr class="coluna">
-      <div class="frete">
-        <i class="fa-solid fa-star"></i>
-        Livros recomendados
-      </div>
-      <hr class="coluna">
-      <div class="frete">
-        <i class="fa-solid fa-book-open"></i>
-        Mais vendidos
-      </div>
-    </div>
-    <hr class="linha">
-  </section>
-  <section class="lancamentos" v-if="!mostrarcarrinho">
-    <div class="titulo">
-
-      <h1>Lançamentos</h1>
-    </div>
-    <ul>
-      <li v-for="(item, index) of produtos" :key="index">
-        <img :src="item.capa" :alt="item.titulo">
-        <h2>{{ item.titulo }}</h2>
-        <p>{{ item.autor }}</p>
-        <p class="preco">R${{ item.preco }}</p>
-        <button>
-          <i class="fa-solid fa-cart-shopping"></i>
-          Comprar 
-        </button>
-
-      </li>
-    </ul>
-  </section>
-  <section class="carrinho" v-if="mostrarcarrinho">
-    <h1>Carrinho</h1>
-    <ul>
-      <li>
-        <p>Título</p>
-      </li>
-      <li>
-        Quantidade
-      </li>
-      <li>
-        Subtotal
-      </li>
-    </ul>
-  <ul v-if="carrinho.length > 0">
-    <li v-for="item in carrinho" :key="item.id">
-      <div>
-        <img :src="item.capa" alt="item.titulo">
-        <div>
-          <h3>{{ item.titulo }}</h3>
-          <p>Quantidade: {{ item.quantidade }}</p>
-          <p>Subtotal: R$ {{ (item.preco * item.quantidade).toFixed(2) }}</p>
-          <button @click="removerDoCarrinho(item)">
-            Remover
-          </button>
+      <div class="itenss">
+        <div class="frete">
+          <i class="fa-solid fa-truck"></i>
+          Frete grátis para SC
+        </div>
+        <hr class="coluna">
+        <div class="frete">
+          <i class="fa-solid fa-star"></i>
+          Livros recomendados
+        </div>
+        <hr class="coluna">
+        <div class="frete">
+          <i class="fa-solid fa-book-open"></i>
+          Mais vendidos
         </div>
       </div>
-    </li>
-  </ul>
-  <p v-else>O carrinho está vazio.</p>
-  <button>
-    Voltar para loja
-  </button>
-  <p><input type="text" placeholder="Código do cupom">
-  <button>
-    Inserir Cupom
-  </button>
-</p>
-<h2>Total da Compra</h2>
-<ul>
-  <li>
-    <h2>Produtos: R$ {{ totalCarrinho() }}</h2>
-  </li>
-  <li>
-    <h2>Frete: Grátis</h2>
-  </li>
-  <li>
-    <h2>Total: R$ {{ totalCarrinho() }}</h2>
-  </li>
-  <li>
-    <button>
-      Ir para o pagamento
-    </button>
-  </li>
-</ul>
-</section>
-</main> 
-<footer>
-  <nav>
-    <div class="redes">
-      <h2>IFbooks</h2>
-      <i class="fa-brands fa-square-facebook"></i>
-      <i class="fa-brands fa-square-instagram"></i>
-      <i class="fa-brands fa-square-twitter"></i>
-    </div>
-    <div class="contato">
-      <h2>Contato</h2>
-      <nav>
-        <i class="fa-solid fa-phone"></i> 
-        <p>+55 47 40045263</p>
-        <i class="fa-solid fa-clock"></i> 
-        <p>8h às 23h - Seg a Sex</p>
-        <i class="fa-solid fa-envelope"></i> 
-        <p>contato@ifbooks.com</p>
-      </nav>
-      <img src="/public/imagens/paypal.png" alt="paypal.png">
-      <img src="/public/imagens/MasterCard.png" alt="MasterCard.png">
-      <img src="/public/imagens/VISA.png" alt="VISA.png">
-    </div>
-    <hr>
-    <div class="copy">
-      <p>&copy; Alguns direitos reservados. IFbooks 2025. </p>
-    </div>
-  </nav>
-</footer>
+      <hr class="linha">
+    </section>
+    <section class="lancamentos" v-if="!mostrarcarrinho">
+      <div class="titulo">
+        <h1>Lançamentos</h1>
+      </div>
+      <ul>
+        <li v-for="(item, index) of produtos" :key="index">
+          <img :src="item.capa" :alt="item.titulo">
+          <h2>{{ item.titulo }}</h2>
+          <p>{{ item.autor }}</p>
+          <p class="preco">R${{ item.preco }}</p>
+          <button @click="adicionarAoCarrinho(item)">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Adicionar ao Carrinho
+          </button>
+        </li>
+      </ul>
+    </section>
+    <section class="carrinho" v-if="mostrarcarrinho">
+      <h1>Carrinho</h1>
+      <ul>
+        <li>
+          <p>Título</p>
+        </li>
+        <li>
+          Quantidade
+        </li>
+        <li>
+          Subtotal
+        </li>
+      </ul>
+      <ul v-if="carrinho.length > 0">
+        <li v-for="item in carrinho" :key="item.id">
+          <div>
+            <img :src="item.capa" alt="item.titulo">
+            <div>
+              <h3>{{ item.titulo }}</h3>
+              
+              <p>Subtotal: R$ {{ (item.preco * item.quantidade).toFixed(2) }}</p>
+              <button @click="removerDoCarrinho(item)">
+                -
+              </button>
+              <p> {{ item.quantidade }}</p>
+              <button @click="aumentarQuantidade(item)">
+                +
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <p v-else>O carrinho está vazio.</p>
+      <button @click="mostrarcarrinho = false">Voltar para loja</button>
+      <p>
+        <input type="text" placeholder="Código do cupom">
+        <button>
+          Inserir Cupom
+        </button>
+      </p>
+      <h2>Total da Compra</h2>
+      <ul>
+        <li>
+          <h2>Produtos: R$ {{ totalCarrinho() }}</h2>
+        </li>
+        <li>
+          <h2>Frete: Grátis</h2>
+        </li>
+        <li>
+          <h2>Total: R$ {{ totalCarrinho() }}</h2>
+        </li>
+        <li>
+          <button>
+            Ir para o pagamento
+          </button>
+        </li>
+      </ul>
+    </section>
+  </main> 
+  <footer>
+    <nav>
+      <div class="redes">
+        <h2>IFbooks</h2>
+        <i class="fa-brands fa-square-facebook"></i>
+        <i class="fa-brands fa-square-instagram"></i>
+        <i class="fa-brands fa-square-twitter"></i>
+      </div>
+      <div class="contato">
+        <h2>Contato</h2>
+        <nav>
+          <i class="fa-solid fa-phone"></i> 
+          <p>+55 47 40045263</p>
+          <i class="fa-solid fa-clock"></i> 
+          <p>8h às 23h - Seg a Sex</p>
+          <i class="fa-solid fa-envelope"></i> 
+          <p>contato@ifbooks.com</p>
+        </nav>
+        <img src="/public/imagens/paypal.png" alt="paypal.png">
+        <img src="/public/imagens/MasterCard.png" alt="MasterCard.png">
+        <img src="/public/imagens/VISA.png" alt="VISA.png">
+      </div>
+      <hr>
+      <div class="copy">
+        <p>&copy; Alguns direitos reservados. IFbooks 2025. </p>
+      </div>
+    </nav>
+  </footer>
 </template>
 
 <style scoped>
+
+
   div.pagina1{
     display: flex;
 }
@@ -457,5 +465,4 @@ header div.topo{
   section.mais div.itenss{
     margin: 0 0 0 13vw;
   }
-
 </style>
