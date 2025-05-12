@@ -261,6 +261,7 @@ const mostrarcarrinho = ref(false);
   <footer>
     <nav>
     <div class="sepelement">
+
       <div class="redes">
         <h2>IFbooks</h2>
         <i class="fa-brands fa-square-facebook"></i>
