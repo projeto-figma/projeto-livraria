@@ -3,7 +3,7 @@ import { ref } from 'vue';
 const produtos = ref([
   {
     id: 1,
-    titulo: 'Chain of Iron: Volume 2',
+    titulo:'Chain of Iron:Vol.2',
     autor: 'Cassandra Clare',
     preco: 23.24,
     capa: "public/imagens/livro1.png",
@@ -180,8 +180,10 @@ const mostrarcarrinho = ref(false);
         </li>
       </ul>
     </section>
+
     <section class="carrinho" v-if="mostrarcarrinho">
       <h1>Carrinho</h1>
+      <div class="classes">
       <ul>
         <li>
           <p>Título</p>
@@ -193,14 +195,18 @@ const mostrarcarrinho = ref(false);
           Subtotal
         </li>
       </ul>
+      </div>  
+      <hr>
       <ul v-if="carrinho.length > 0">
-        <li v-for="item in carrinho" :key="item.id">
-          <div>
+        <li v-for="item in carrinho" :key="item.id" class="livcontval">
+          <div class="nlivro">
             <img :src="item.capa" alt="item.titulo">
             <div>
               <h3>{{ item.titulo }}</h3>
-              
-              <p>Subtotal: R$ {{ (item.preco * item.quantidade).toFixed(2) }}</p>
+              <p>R$ {{ (item.preco * item.quantidade).toFixed(2) }}</p>
+            </div>
+          </div>
+            <div class="button">
               <button @click="removerDoCarrinho(item)">
                 -
               </button>
@@ -209,38 +215,53 @@ const mostrarcarrinho = ref(false);
                 +
               </button>
             </div>
-          </div>
+            <div>
+            <p>R$00</p> 
+            </div>         
         </li>
       </ul>
       <p v-else>O carrinho está vazio.</p>
-      <button @click="mostrarcarrinho = false">Voltar para loja</button>
-      <p>
+    
+      <button @click="mostrarcarrinho = false" class="voltar">Voltar para loja</button>
+      <div class="botoes">
+      <div>
+      <p class="cupom">
         <input type="text" placeholder="Código do cupom">
         <button>
           Inserir Cupom
         </button>
       </p>
-      <h2>Total da Compra</h2>
-      <ul>
+      </div>
+      <div class="totalCompra">
+      <ul class="cubo">
         <li>
-          <h2>Produtos: R$ {{ totalCarrinho() }}</h2>
+          <h2>Total da Compra</h2>
         </li>
         <li>
-          <h2>Frete: Grátis</h2>
+          <p>Produtos: <span>R$ {{ totalCarrinho() }}</span></p>
+        </li>
+        <hr>
+        <li>
+          <p>Frete: <span>Grátis</span></p>
+        </li>
+        <hr>
+        <li>
+          <p>Total: <span>R$ {{ totalCarrinho() }}</span></p>
         </li>
         <li>
-          <h2>Total: R$ {{ totalCarrinho() }}</h2>
-        </li>
-        <li>
-          <button>
+          <button class="irpagamento">
             Ir para o pagamento
           </button>
         </li>
       </ul>
+      </div>
+    </div>
     </section>
   </main> 
   <footer>
     <nav>
+    <div class="sepelement">
+
       <div class="redes">
         <h2>IFbooks</h2>
         <i class="fa-brands fa-square-facebook"></i>
@@ -248,20 +269,31 @@ const mostrarcarrinho = ref(false);
         <i class="fa-brands fa-square-twitter"></i>
       </div>
       <div class="contato">
-        <h2>Contato</h2>
         <nav>
-          <i class="fa-solid fa-phone"></i> 
-          <p>+55 47 40045263</p>
-          <i class="fa-solid fa-clock"></i> 
-          <p>8h às 23h - Seg a Sex</p>
-          <i class="fa-solid fa-envelope"></i> 
-          <p>contato@ifbooks.com</p>
+        <h2>Contato</h2>
+        <div>
+            <div class="loglegenda">
+              <i class="fa-solid fa-phone"></i> 
+              <p>+55 47 40045263</p>
+            </div>
+            <div class="loglegenda">
+              <i class="fa-solid fa-clock"></i>
+              <p>8h às 23h - Seg a Sex</p>
+            </div>
+            <div class="loglegenda">
+              <i class="fa-solid fa-envelope"></i> 
+              <p>contato@ifbooks.com</p>
+            </div>
+        </div>
         </nav>
+    </div>  
+      </div>
+      <div class="cartao"> 
         <img src="/public/imagens/paypal.png" alt="paypal.png">
         <img src="/public/imagens/MasterCard.png" alt="MasterCard.png">
-        <img src="/public/imagens/VISA.png" alt="VISA.png">
-      </div>
-      <hr>
+        <img src="/public/imagens/VISA.png" alt="VISA.png">  
+      </div>  
+        <hr>
       <div class="copy">
         <p>&copy; Alguns direitos reservados. IFbooks 2025. </p>
       </div>
@@ -308,7 +340,7 @@ header div.topo{
   }
   div.itens nav a{
     text-decoration: none;
-    margin: 20px;
+    margin: 20px 15px 0 0;
     color: black;
   }
   div.icons i{
@@ -381,6 +413,33 @@ header div.topo{
   header div.itens nav a{
     color: #7B7881;
   }
+  /*------footer-----*/
+  footer div.sepelement{
+    display: flex;
+    justify-content: space-between;
+  }
+  footer div.redes i{
+    font-size: 1.6rem;
+    margin: 10px 10px 0 0;
+  }
+  footer div.redes{
+    padding: 40px 0 0 80px;
+  }
+  footer div.loglegenda i{
+    margin-right: 9px;
+  }
+  footer div.cartao{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 80px;
+  }
+  footer img{
+    margin: 20px 7px 35px 7px;
+  }
+  footer div.loglegenda{
+    display: flex;
+    margin: 20px 40px 0 0 ;
+  }
   footer {
     background-color: #27AE60;
   }
@@ -395,6 +454,7 @@ header div.topo{
     opacity: 0.8;
     display: flex;
     justify-content: right;
+    margin: 40px 2vw 2vw 2vw ;
   }
   footer nav div.redes {
     color: white;
@@ -413,6 +473,7 @@ header div.topo{
   footer div.copy p {
     margin: 30px;
   }
+  /*----final-footer----*/
   section.inicio .pagina1 {
     display: flex;
     justify-content: space-between;
@@ -464,5 +525,86 @@ header div.topo{
   }
   section.mais div.itenss{
     margin: 0 0 0 13vw;
+  }
+  /*-----carrinho-----*/
+  section.carrinho span{
+    display: flex;
+    justify-content: flex-end;
+  }
+  section.carrinho ul.cubo{
+    border: 1px solid black;
+    padding: 20px 10px 20px 10px;
+  }
+  section.carrinho h2{
+    font-size: 1.4rem;
+    margin: 3px 2px 30px 0;
+  }
+  section.carrinho button.irpagamento{
+    background-color: #27AE60;
+    color: white;
+    padding: 15px 45px 15px 45px;
+    margin: 10px 40px 10px 40px;
+  }
+  section.carrinho div.totalcompra{
+    border: 1px solid black;
+  }
+  section.carrinho div.botoes {
+    display: flex;
+    justify-content: space-between;
+  }
+  section.carrinho p.cupom input{
+    padding: 15px 60px 15px 15px;
+  }
+  section.carrinho p.cupom button{
+    padding: 15px 40px 15px 40px;
+    background-color: #27AE60;
+    color: white;
+    margin: 0 0 0 20px;
+  }
+  section.carrinho button.voltar{
+    padding: 15px 40px 15px 40px;
+    font-weight: bold;
+    margin: 30px 0 50px 0;
+  }
+  section.carrinho div.button{
+    display: flex;
+    margin: 20px 0 0 0 ;
+    height: 2vw;
+  }
+  section.carrinho ul li.livcontval{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px 0 0;
+  }
+  section.carrinho h1{
+    margin: 2vw 0 2vw 0;
+    font-size: 2rem;
+    color: #27AE60;
+    font-weight: bold;
+
+  }
+  section.carrinho{
+    padding: 7vw;
+  }
+  section.carrinho div.classes ul{
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    padding: 20px;
+  }
+  section.carrinho hr{
+    border-bottom: #27AE60 1px;
+  }
+  section.carrinho img{
+    width: 150px;
+    height: auto;
+    margin: 20px;
+  }
+  section.carrinho ul li div.nlivro{
+    display: flex;
+  }
+  section.carrinho h3{
+    font-size: 1.4rem;
+    margin:40px 0 20px 0;
   }
 </style>
