@@ -216,7 +216,7 @@ const mostrarcarrinho = ref(false);
               </button>
             </div>
             <div>
-            <p>R$00</p> 
+            <p>R$ {{ (item.preco * item.quantidade).toFixed(2) }}</p>
             </div>         
         </li>
       </ul>
