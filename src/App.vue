@@ -87,8 +87,7 @@ function aumentarQuantidade(produto) {
     carrinho.value.push({ ...produto, quantidade: 1 }); 
   }
 }
-
-
+.
 function totalCarrinho() {
   return carrinho.value.reduce((total, item) => total + item.preco * item.quantidade, 0).toFixed(2);
 }
