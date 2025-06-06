@@ -203,7 +203,7 @@ const mostrarcarrinho = ref(false);
             <img :src="item.capa" alt="item.titulo">
             <div>
               <h3>{{ item.titulo }}</h3>
-              <p>R$ {{ (item.preco * item.quantidade).toFixed(2) }}</p>
+              <p>R$ {{item.preco}} </p>
             </div>
           </div>
             <div class="button">
