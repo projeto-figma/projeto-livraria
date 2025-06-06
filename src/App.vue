@@ -6,56 +6,56 @@ const produtos = ref([
     titulo:'Chain of Iron:Vol.2',
     autor: 'Cassandra Clare',
     preco: 23.24,
-    capa: "public/imagens/livro1.png",
+    capa: "/imagens/livro1.png",
   },
   {
     id: 2,
     titulo: 'Chain of Thorns',
     autor: 'Cassandra Clare',
     preco: 23.24,
-    capa: "public/imagens/livro2.png",
+    capa: "/imagens/livro2.png",
   },
   {
     id: 3,
     titulo: 'City of Fallen Angels',
     autor: 'Cassandra Clare',
     preco: 13.94,
-    capa: "public/imagens/livro3.png",
+    capa: "/imagens/livro3.png",
   },
   {
     id: 4,
     titulo: 'Nona the Ninth',
     autor: 'Cassandra Clare',
     preco: 16.84,
-    capa: "public/imagens/livro4.png",
+    capa: "/imagens/livro4.png",
   },
   {
     id: 5,
     titulo: 'Harlem Shuffle',
     autor: 'Colson Whitehead',
     preco: 26.92,
-    capa: "public/imagens/livro5.png",
+    capa: "/imagens/livro5.png",
   },
   {
     id: 6,
     titulo: 'Two Old Women',
     autor: 'Velma Wallis',
     preco: 13.95,
-    capa: "public/imagens/livro6.png",
+    capa: "/imagens/livro6.png",
   },
   {
     id: 7,
     titulo: 'Carrie Soto Is Back',
     autor: 'Taylor Jenkins Reid',
     preco: 26.04,
-    capa: "public/imagens/livro7.png",
+    capa: "/imagens/livro7.png",
   },
   {
     id: 8,
     titulo: 'Book Lovers',
     autor: 'Emily Henry',
     preco: 15.81,
-    capa: "public/imagens/livro8.png",
+    capa: "/imagens/livro8.png",
   },
 ]);
 const carrinho = ref([]);
@@ -138,7 +138,7 @@ const mostrarcarrinho = ref(false);
           <button>Acessar página do livro</button>
         </div>  
         <div class="imagembook">
-          <img src="/public/imagens/book.png" alt="book.png" style="display: block;">
+          <img src="/imagens/book.png" alt="book.png" style="display: block;">
         </div>
       </div> 
     </section>
